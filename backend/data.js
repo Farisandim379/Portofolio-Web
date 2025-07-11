@@ -13,7 +13,7 @@ const profileData = {
   profileImage: 'http://localhost:3000/images/foto-profile.jpg' 
 };
 const skills = [
-  { name: 'Vue.js', level: 'Mahir' },
+  { name: 'react.js', level: 'Mahir' },
   { name: 'JavaScript', level: 'Mahir' },
   { name: 'Tailwind CSS', level: 'Mahir' },
   { name: 'Node.js', level: 'Menengah' },
