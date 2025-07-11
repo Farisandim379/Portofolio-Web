@@ -25,9 +25,7 @@ const skills = [
 
 const projects = [
   {
-    title: 'Website Toko Online',
-    // === PERUBAHAN DI SINI ===
-    // Mengarah ke server backend Anda di folder public/images
+    title: 'Website Topupin',
     image: 'http://localhost:3000/images/e-commerce.jpg', 
     description: 'Platform e-commerce dengan fitur keranjang belanja.',
     tech: ['Vue.js', 'Express.js', 'PostgreSQL'],

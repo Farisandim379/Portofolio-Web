@@ -1,25 +1,20 @@
-// backend/index.js
-
 const express = require('express');
 const cors = require('cors');
-const path = require('path'); // <-- TAMBAHKAN INI: Modul untuk mengelola path file
-const { educationHistory, skills, projects, profileData } = require('./data');
-
+// Untuk sementara kita ambil dari data.js. Nanti ini akan dihapus.
+const { educationHistory, skills, projects } = require('./data.js');
 const app = express();
-const PORT = 3000;
-
 app.use(cors());
-app.use(express.json());
-
-app.use('/images', express.static(path.join(__dirname, 'public/images')));
-
-// API Routes
-app.get('/api/education', (req, res) => res.json(educationHistory));
-app.get('/api/skills', (req, res) => res.json(skills));
-app.get('/api/projects', (req, res) => res.json(projects));
-app.get('/api/profile', (req, res) => res.json(profileData));
-
-
-app.listen(PORT, () => {
-  console.log(` Server backend berjalan di http://localhost:${PORT}`);
+// Endpoint untuk mendapatkan data pendidikan
+app.get('/api/education', (req, res) => {
+res.json(educationHistory);
 });
+// Endpoint untuk mendapatkan data skill
+app.get('/api/skills', (req, res) => {
+res.json(skills);
+});
+// Endpoint untuk mendapatkan data proyek
+app.get('/api/projects', (req, res) => {
+res.json(projects);
+});
+// Baris ini penting agar Vercel bisa menjalankan backend Anda
+module.exports = app;
