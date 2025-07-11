@@ -12,7 +12,7 @@ const profile = ref({
 
 onMounted(async () => {
   try {
-    const response = await axios.get('http://localhost:3000/api/profile');
+    const response = await axios.get('/api/profile');
     profile.value = response.data;
   } catch (error) {
     console.error('Terjadi kesalahan saat mengambil data profil:', error);
