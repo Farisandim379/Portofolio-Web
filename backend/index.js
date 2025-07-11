@@ -1,36 +1,48 @@
-const express = require('express');
-const cors = require('cors');
+// Gambar tidak lagi diimpor. Mereka akan diakses melalui folder /public.
 
-// Path diperbaiki untuk menunjuk ke folder backend dan mengambil semua data
-const { profileData, educationHistory, skills, projects } = require('../backend/data.js');
+const educationHistory = [
+  { id: 1, period: '2023 - Sekarang', institution: 'Universitas Amikom Yogyakarta', major: 'S1 - Informatika' },
+  { id: 2, period: '2019 - 2022', institution: 'MAN 1 Salatiga', major: 'MIPA' },
+  { id: 3, period: '2016 - 2019', institution: 'Mts Sudirman Getasan', major: '9 A' },
+  { id: 4, period: '2010 - 2016', institution: 'SD Negeri Kopeng 1', major: '' }
+];
 
-const app = express();
-app.use(cors());
+const profileData = {
+  name: 'Faris Andi Muhammad',
+  tagline: 'Mahasiswa Teknik Informatika yang bersemangat dalam pengembangan web dan desain antarmuka.',
+  // Path gambar sekarang menjadi URL relatif ke folder public
+  profileImage: '/images/foto-profile.jpg'
+};
 
-// Endpoint BARU untuk data profil
-app.get('/api/profile', (req, res) => {
-  // Pastikan profileData ada sebelum mengirim
-  if (profileData) {
-    res.json(profileData);
-  } else {
-    res.status(404).json({ message: "Profile data not found" });
+const skills = [
+  { name: 'react.js', level: 'Mahir' },
+  { name: 'JavaScript', level: 'Mahir' },
+  { name: 'Tailwind CSS', level: 'Mahir' },
+  { name: 'Node.js', level: 'Menengah' },
+  { name: 'Express.js', level: 'Menengah' },
+  { name: 'PostgreSQL', level: 'Menengah' },
+  { name: 'Git & GitHub', level: 'Mahir' },
+  { name: 'HTML5 & CSS3', level: 'Mahir' },
+];
+
+const projects = [
+  {
+    title: 'Website Topupin',
+    // Path gambar sekarang menjadi URL relatif ke folder public
+    image: '/images/e-commerce.jpg',
+    description: 'Platform e-commerce dengan fitur keranjang belanja.',
+    tech: ['Vue.js', 'Express.js', 'PostgreSQL'],
+    link: '#'
+  },
+  {
+    title: 'Aplikasi Manajemen Tugas',
+    // Path gambar sekarang menjadi URL relatif ke folder public
+    image: '/images/managements.jpg',
+    description: 'Aplikasi untuk melacak progres tugas harian.',
+    tech: ['React', 'Firebase'],
+    link: '#'
   }
-});
+];
 
-// Endpoint untuk mendapatkan data pendidikan
-app.get('/api/education', (req, res) => {
-  res.json(educationHistory);
-});
-
-// Endpoint untuk mendapatkan data skill
-app.get('/api/skills', (req, res) => {
-  res.json(skills);
-});
-
-// Endpoint untuk mendapatkan data proyek
-app.get('/api/projects', (req, res) => {
-  res.json(projects);
-});
-
-// Baris ini penting agar Vercel bisa menjalankan backend Anda sebagai serverless function
-module.exports = app;
+// Biarkan module.exports seperti ini, sudah benar.
+module.exports = { profileData, educationHistory, skills, projects };
